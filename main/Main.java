@@ -43,7 +43,7 @@ public class Main {
                     Socio nuevoSocio = new Socio(nombre, nivel);
                     
                     if (dao.registrarSocio(nuevoSocio)) {
-                        System.out.println("✅ Socio registrado con éxito en MySQL.");
+                        System.out.println("Socio registrado con éxito en MySQL.");
                     }
 
                 } else if (opcion == 2) {
@@ -52,7 +52,7 @@ public class Main {
                     
                     List<Socio> resultados = dao.buscarSocio(criterio);
                     if (resultados.isEmpty()) {
-                        System.out.println("⚠️ No se encontraron resultados.");
+                        System.out.println("No se encontraron resultados.");
                     } else {
                         System.out.println("--- RESULTADOS ---");
                         for (Socio s : resultados) {
@@ -67,7 +67,7 @@ public class Main {
                 }
 
             } catch (NumberFormatException e) {
-                System.out.println("❌ Error: Debes ingresar un número en el menú.");
+                System.out.println("Error: Debes ingresar un número en el menú.");
             }
         }
         System.out.println("Saliendo del sistema...");
