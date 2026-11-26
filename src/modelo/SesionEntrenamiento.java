@@ -3,34 +3,36 @@ package modelo;
 import java.time.LocalDate;
 
 /**
- * Sesion de entrenamiento entre un socio (Socio 1) y su entrenador
- * o companero (Socio 2). Al procesarse, las calorias quemadas se
- * suman al puntaje acumulado del socio.
+ * Sesión de entrenamiento: un socio entrena con otro socio que hace de entrenador.
  */
 public class SesionEntrenamiento {
 
-    /** Identificador unico de la sesion (lo asigna la base de datos). */
+    /** Id de la sesión (lo pone la base de datos). */
     private int idSesion;
-    /** Socio que realiza el entrenamiento (Socio 1). */
+
+    /** Socio que entrena. */
     private Socio socio;
-    /** Entrenador o companero (Socio 2). */
+
+    /** Entrenador o compañero (también es un socio). */
     private Socio entrenador;
-    /** Calorias quemadas (puntos obtenidos) en la sesion. */
+
+    /** Calorías quemadas en la sesión. */
     private int calorias;
-    /** Fecha en la que se realizo la sesion. */
+
+    /** Día en que se hizo la sesión. */
     private LocalDate fecha;
 
-    /** Constructor vacio. */
+    /** Constructor vacío. */
     public SesionEntrenamiento() {
     }
 
     /**
-     * Crea una sesion nueva, todavia sin id (se asigna al guardarla).
+     * Crea una sesión nueva, el id se pone al guardarla en la base de datos.
      *
      * @param socio      socio que entrena
-     * @param entrenador entrenador o companero (otro socio)
-     * @param calorias   calorias quemadas (debe ser positivo)
-     * @param fecha      fecha de la sesion
+     * @param entrenador entrenador o compañero
+     * @param calorias   calorías quemadas
+     * @param fecha      fecha de la sesión
      */
     public SesionEntrenamiento(Socio socio, Socio entrenador, int calorias, LocalDate fecha) {
         this.socio = socio;
@@ -39,10 +41,10 @@ public class SesionEntrenamiento {
         this.fecha = fecha;
     }
 
-    /** @return el id de la sesion */
+    /** @return el id de la sesión */
     public int getIdSesion() { return idSesion; }
 
-    /** @param idSesion el id de la sesion */
+    /** @param idSesion el id de la sesión */
     public void setIdSesion(int idSesion) { this.idSesion = idSesion; }
 
     /** @return el socio que entrena */
@@ -51,28 +53,28 @@ public class SesionEntrenamiento {
     /** @param socio el socio que entrena */
     public void setSocio(Socio socio) { this.socio = socio; }
 
-    /** @return el entrenador o companero */
+    /** @return el entrenador o compañero */
     public Socio getEntrenador() { return entrenador; }
 
-    /** @param entrenador el entrenador o companero */
+    /** @param entrenador el entrenador o compañero */
     public void setEntrenador(Socio entrenador) { this.entrenador = entrenador; }
 
-    /** @return las calorias quemadas en la sesion */
+    /** @return las calorías quemadas */
     public int getCalorias() { return calorias; }
 
-    /** @param calorias las calorias quemadas en la sesion */
+    /** @param calorias las calorías quemadas */
     public void setCalorias(int calorias) { this.calorias = calorias; }
 
-    /** @return la fecha de la sesion */
+    /** @return la fecha de la sesión */
     public LocalDate getFecha() { return fecha; }
 
-    /** @param fecha la fecha de la sesion */
+    /** @param fecha la fecha de la sesión */
     public void setFecha(LocalDate fecha) { this.fecha = fecha; }
 
     /**
-     * Devuelve la sesion en texto legible para mostrarla en consola.
+     * Devuelve la sesión como texto para mostrarla en pantalla.
      *
-     * @return descripcion de la sesion
+     * @return la sesión en texto
      */
     @Override
     public String toString() {

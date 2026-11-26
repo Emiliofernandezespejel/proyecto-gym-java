@@ -5,29 +5,31 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Ranking de socios ordenado por puntaje acumulado (de mayor a menor).
- * Trabaja con la lista de socios que ya esta cargada en memoria,
- * para no consultar la base de datos a cada rato.
+ * Ranking de socios ordenado por puntaje acumulado, de mayor a menor.
+ * Trabaja con la lista que ya está en memoria, así no se consulta la
+ * base de datos a cada rato.
  */
 public class Ranking {
 
     /**
-     * Devuelve una copia de la lista de socios ordenada de mayor a menor
-     * puntaje acumulado. La lista original no se modifica.
+     * Regresa una copia de la lista ordenada de mayor a menor puntaje.
+     * La lista original no se modifica.
      *
      * @param socios lista de socios a ordenar
-     * @return nueva lista ordenada por puntaje descendente
+     * @return lista nueva ordenada por puntaje
      */
     public static List<Socio> ordenar(List<Socio> socios) {
+        // Copia de la lista para no cambiar la original
         List<Socio> ordenados = new ArrayList<>(socios);
+        // Ordena por puntaje y le da la vuelta para que quede de mayor a menor
         ordenados.sort(Comparator.comparingInt(Socio::getPuntajeAcumulado).reversed());
         return ordenados;
     }
 
     /**
-     * Imprime en consola el ranking general con la posicion de cada socio.
+     * Imprime el ranking con la posición de cada socio.
      *
-     * @param socios lista de socios (sin ordenar o ya ordenada)
+     * @param socios lista de socios
      */
     public static void mostrar(List<Socio> socios) {
         if (socios == null || socios.isEmpty()) {
@@ -38,6 +40,7 @@ public class Ranking {
         List<Socio> ordenados = ordenar(socios);
         System.out.println("=== RANKING GENERAL ===");
         int posicion = 1;
+        // Cada vuelta del ciclo es un lugar del ranking
         for (Socio s : ordenados) {
             System.out.println(posicion + ". " + s.getNombre()
                     + " (" + s.getNivel() + ") - "
@@ -46,5 +49,3 @@ public class Ranking {
         }
     }
 }
-
-    
