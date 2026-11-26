@@ -18,14 +18,18 @@ public class Ranking {
      * @param socios lista de socios a ordenar
      * @return lista nueva ordenada por puntaje
      */
-    public static List<Socio> ordenar(List<Socio> socios) {
+         public static List<Socio> ordenar(List<Socio> socios) {
+        // Si la lista es null, regresa una lista vacía para no tronar
+        if (socios == null) {
+            return new ArrayList<>();
+        }
         // Copia de la lista para no cambiar la original
         List<Socio> ordenados = new ArrayList<>(socios);
-        // Ordena por puntaje y le da la vuelta para que quede de mayor a menor
-        ordenados.sort(Comparator.comparingInt(Socio::getPuntajeAcumulado).reversed());
+        // Mayor a menor puntaje; si empatan, por nombre
+        ordenados.sort(Comparator.comparingInt(Socio::getPuntajeAcumulado).reversed()
+                .thenComparing(Socio::getNombre));
         return ordenados;
     }
-
     /**
      * Imprime el ranking con la posición de cada socio.
      *
